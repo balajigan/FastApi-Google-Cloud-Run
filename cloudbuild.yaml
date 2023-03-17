@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/FastApi-Google-Cloud-Run', '.' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/fastapi-google-cloud-run', '.' ]
   id: 'build-image-service'
   waitFor: ['-']
 - name: 'gcr.io/cloud-builders/docker'
