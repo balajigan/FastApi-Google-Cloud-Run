@@ -4,7 +4,7 @@ steps:
   id: 'build-image-service'
   waitFor: ['-']
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'push', 'gcr.io/$PROJECT_ID/FastApi-Google-Cloud-Run' ]
+  args: [ 'push', 'gcr.io/$PROJECT_ID/fastapi-google-cloud-run' ]
   id: 'push-image-to-container-registry'
   waitFor: ['build-image-service']  
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -13,7 +13,7 @@ steps:
   - 'deploy'
   - 'microservice'
   - '--image'
-  - 'gcr.io/$PROJECT_ID/FastApi-Google-Cloud-Run'
+  - 'gcr.io/$PROJECT_ID/fastapi-google-cloud-run'
   - '--region'
   - 'us-east4'
   - '--platform'
