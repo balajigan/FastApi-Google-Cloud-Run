@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi import Response
 
 app = FastAPI()
 
@@ -12,6 +13,6 @@ def products():
 
 @app.get("/customers")
 def products():
-    return {"First Name": "John",
-             "Last Name": "Smith",
-             "Address": "1234 West RD"}
+    return {\n"First Name": "John", \n
+             "Last Name": "Smith", \n
+             "Address": "1234 West RD" \n}
