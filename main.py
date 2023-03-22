@@ -10,6 +10,14 @@ class Item(BaseModel):
     price: float
     tax: float | None = None
     tags: list[str] = []
+
+class Customer(BaseModel):
+    FirstName: str
+    LastName: str    
+    Address: str
+    State: str
+    Phone: str
+    
         
 @app.get("/")
 def home():
@@ -19,11 +27,19 @@ def home():
 def products():
     return {"Name": "product1"}
 
-@app.get("/customers")
-def products():
+@app.get("/customers2")
+def products2():
     return {"First Name": "John",
              "Last Name": "Smith",
              "Address": "1234 West RD"}
+
+@app.get("/customers")
+def customers():
+    return [
+        Customer(FirstName="John", LastName="Walter", Address="123 willson Rd, Apt 456", State="TX", Phone="123-456-7890"),
+        Customer(FirstName="Raj", LastName="Kumar", Address="1367 Bend Rd, Apt 456", State="MN", Phone="230-564-8790"),
+        Customer(FirstName="Victor", LastName="Frank", Address="2783 Nelson Rd, Apt 456", State="CA", Phone="312-645-0890"),
+    ]
 
 @app.get("/items/")
 async def read_items() -> list[Item]:
