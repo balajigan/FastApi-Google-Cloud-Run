@@ -13,6 +13,6 @@ def products():
 
 @app.get("/customers")
 def products():
-    return {\n"First Name": "John", \n
-             "Last Name": "Smith", \n
-             "Address": "1234 West RD" \n}
+    return {"First Name": "John",
+             "Last Name": "Smith",
+             "Address": "1234 West RD"}
