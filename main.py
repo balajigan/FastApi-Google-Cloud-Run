@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi import Response
+from fastapi import Request
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -41,3 +42,10 @@ async def read_items() -> list[Item]:
         Item(name="Catchup", price=19.0),
     ]
 
+@app.post("/gcp-resources")
+def gcpResources(resource : Request):
+    reqested_resource = resource.json()
+    return {
+        "status" : "SUCCESS",
+        "data" : reqested_resource
+    }
