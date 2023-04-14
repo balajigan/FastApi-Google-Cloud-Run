@@ -12,6 +12,13 @@ class Item(BaseModel):
     tax: float | None = None
     tags: list[str] = ['Project ID1', 'Project ID2', 'Project ID3']
 
+class LookupData(BaseModel):
+    project_id: list[str] = ['Project ID1', 'Project ID2', 'Project ID3']
+    region_name: list[str] = ['us-east1', 'us-east2']    
+    zone_name: list[str] = ['us-east1-a', 'us-east2-b']
+    network : list[str] = ['network1', 'network2]   
+    subnetwork : list[str] = ['subnetwork1', 'subnetwork2]                          
+        
 class Customer(BaseModel):
     FirstName: str
     LastName: str    
@@ -23,6 +30,8 @@ class Customer(BaseModel):
 def home():
     return {"message": "Home Page"}
 
+                              
+                              
 @app.get("/products")
 def products():
     return {"Name": "product1"}
