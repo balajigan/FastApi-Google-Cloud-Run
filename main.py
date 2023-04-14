@@ -43,7 +43,7 @@ async def read_items() -> list[Item]:
     ]
 
 @app.post("/gcp-resources")
-def gcpResources(resource : Request):
+def gcpResources(resource : Item):
 #    reqested_resource = resource.json()
     return {
         "status" : "SUCCESS"
