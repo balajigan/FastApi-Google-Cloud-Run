@@ -27,8 +27,8 @@ class Customer(BaseModel):
     Phone: str
           
 @app.get("/")
-def home():
-    return {"message": "Home Page"}
+def Help():
+    return [LookupData()]
 
                               
                               
