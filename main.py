@@ -10,7 +10,7 @@ class Item(BaseModel):
     description: str | None = None
     price: float
     tax: float | None = None
-    tags: list[str] = []
+    tags: list[str] = ['Project ID1', 'Project ID2', 'Project ID3']
 
 class Customer(BaseModel):
     FirstName: str
