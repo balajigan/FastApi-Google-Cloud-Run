@@ -14,12 +14,12 @@ class Item(BaseModel):
     description: str | None = None
     price: float
     tax: float | None = None
-    tags: list[str] = ['Project ID1', 'Project ID2', 'Project ID3', 'Project ID4']
+    tags: list[str] = ['Project ID1', 'Project ID2', 'Project ID3', 'Project ID4', 'Project ID5']
 
 class LookupData(BaseModel):
-    project_id: list[str] = ['Project_ID1', 'Project_ID2', 'Project_ID3', 'Project_ID4']
-    region_name: list[str] = ['us-east1', 'us-east2']    
-    zone_name: list[str] = ['us-east1-a', 'us-east2-b']
+    project_id: list[str] = ['Project_ID1', 'Project_ID2', 'Project_ID3', 'Project_ID4', 'Project_ID4']
+    region_name: list[str] = ['us-east1', 'us-east2', 'us-east3', 'us-east4']    
+    zone_name: list[str] = ['us-east1-a', 'us-east2-b', 'us-east2-c']
     network : list[str] = ['network1', 'network2']   
     subnetwork : list[str] = ['subnetwork1', 'subnetwork2']                          
         
