@@ -5,6 +5,7 @@ from fastapi import Response
 from fastapi import Request
 from pydantic import BaseModel
 from fastapi.responses import FileResponse
+from cloudrun import CloudRun
 import os
 
 app = FastAPI()
@@ -55,12 +56,12 @@ async def read_items() -> list[Item]:
         Item(name="Catchup", price=19.0),
     ]
 
-@app.post("/gcp-resources")
-def gcpResources(item : Item):
+@app.post("/gcp-resources/cloud-run")
+def createCloudRun(cloudRun : CloudRun):
 #    reqested_resource = resource.json()
     return {
         "status" : "SUCCESS"
-#        "data" : item
+#        "data" : cloudRun
     }
 
 #@app.post("/files/")
