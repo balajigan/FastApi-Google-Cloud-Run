@@ -61,7 +61,7 @@ def createCloudRun(cloudRun : CloudRun):
 #    reqested_resource = cloudRun.json()
     print(cloudRun)
     return {
-        "status" : "SUCCESS"
+        "status" : "SUCCESS",
         "data" : "cloudRun.resource_type"
     }
 
