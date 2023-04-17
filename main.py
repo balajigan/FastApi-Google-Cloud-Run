@@ -3,6 +3,8 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi import Response
 from fastapi import Request
 from pydantic import BaseModel
+from fastapi.responses import FileResponse
+
 
 app = FastAPI()
 
@@ -63,6 +65,12 @@ def gcpResources(item : Item):
 #@app.post("/files/")
 #async def create_file(file: Annotated[bytes, File()]):
 #    return {"file_size": len(file)}
+
+@app.get("/download-file")
+def download_file():
+    file_path = "/workspace/Dockerfile"
+    return FileResponse(path=file_path, filename=file_path)
+
 
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile):
