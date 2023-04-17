@@ -4,7 +4,7 @@ from fastapi import Response
 from fastapi import Request
 from pydantic import BaseModel
 from fastapi.responses import FileResponse
-
+import os
 
 app = FastAPI()
 
@@ -68,7 +68,9 @@ def gcpResources(item : Item):
 
 @app.get("/download-file")
 def download_file():
-    file_path = "/workspace/Dockerfile"
+    file_path = "main.py"
+    directory = os.system('pwd')
+    print(directory)
     return FileResponse(path=file_path, filename=file_path)
 
 
