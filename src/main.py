@@ -62,7 +62,7 @@ def createCloudRun(cloudRun : CloudRun):
     print(cloudRun)
     return {
         "status" : "SUCCESS"
-#        "data" : reqested_resource
+        "data" : cloudRun.max_scale_instances
     }
 
 #@app.post("/files/")
