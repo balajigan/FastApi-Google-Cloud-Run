@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from fastapi import Response
 from fastapi import Request
 from pydantic import BaseModel
@@ -58,3 +58,8 @@ def gcpResources(item : Item):
         "status" : "SUCCESS"
 #        "data" : item
     }
+
+@app.post("/uploadfile/")
+async def create_upload_file(file: UploadFile):
+    return {"filename": file.filename}
+
