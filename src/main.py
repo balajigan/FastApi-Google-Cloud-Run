@@ -59,6 +59,7 @@ async def read_items() -> list[Item]:
 @app.post("/gcp-resources/cloud-run")
 def createCloudRun(cloudRun : CloudRun):
 #    reqested_resource = cloudRun.json()
+    print(cloudRun)
     return {
         "status" : "SUCCESS"
 #        "data" : reqested_resource
