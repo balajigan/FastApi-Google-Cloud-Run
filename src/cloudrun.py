@@ -17,8 +17,8 @@ class CloudRun(BaseModel):
 
     template_labels: Optional[dict[str, str]] = None
     argument: Optional[list[str]] = None
-    max_scale_instances: Optional[list[int]] = 2
-    min_scale_instances: Optional[list[int]] = 0
+    max_scale_instances: Optional[int] = 2
+    min_scale_instances: Optional[int] = 0
     env_vars: Optional[list[dict[str,str]]] = [{"environment":"Dev", "ci-number":"12345"}]
 
     limits: Optional[dict[str, str]] = None
