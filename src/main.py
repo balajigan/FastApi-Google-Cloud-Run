@@ -62,7 +62,7 @@ def createCloudRun(cloudRun : CloudRun):
     print(cloudRun)
     return {
         "status" : "SUCCESS"
-        "data" : cloudRun.resource_type
+        "data" : "cloudRun.resource_type"
     }
 
 #@app.post("/files/")
