@@ -61,7 +61,7 @@ def createCloudRun(cloudRun : CloudRun):
 #    reqested_resource = resource.json()
     return {
         "status" : "SUCCESS"
-#        "data" : cloudRun
+        "data" : cloudRun
     }
 
 #@app.post("/files/")
