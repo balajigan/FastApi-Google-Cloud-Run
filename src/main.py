@@ -35,6 +35,8 @@ class Customer(BaseModel):
           
 @app.get("/")
 def Help():
+    pubSub = PubSub()
+    pubSub.registerSubscriber()
     return [LookupData()]
 
                               
