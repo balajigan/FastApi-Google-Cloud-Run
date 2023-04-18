@@ -62,7 +62,7 @@ async def read_items() -> list[Item]:
 def createCloudRun(cloudRun : CloudRun):
 #    reqested_resource = cloudRun.json()
     pubSub = PubSub()
-    pubSub.publishMessage(cloudRun.json())
+    pubSub.publishMessage(cloudRun.resource_type,cloudRun.json())
     print(cloudRun)
     return {
         "status" : "SUCCESS",
