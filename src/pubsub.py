@@ -2,7 +2,7 @@ import os
 from google.cloud import pubsub_v1
 
 class PubSub:
-  def publishMessage():
+  def publishMessage(cls):
     publisher = pubsub_v1.PublisherClient()
     topic_name = 'projects/mytemporaryproject28490/topics/gcp-resource-topic'
     publisher.create_topic(name=topic_name)
