@@ -6,6 +6,8 @@ from fastapi import Request
 from pydantic import BaseModel
 from fastapi.responses import FileResponse
 from cloudrun import CloudRun
+from pubsub import PubSub
+
 import os
 
 app = FastAPI()
@@ -59,6 +61,8 @@ async def read_items() -> list[Item]:
 @app.post("/gcp-resources/cloud-run")
 def createCloudRun(cloudRun : CloudRun):
 #    reqested_resource = cloudRun.json()
+    pubSub = PubSub()
+    pubSub.publishMessage()
     print(cloudRun)
     return {
         "status" : "SUCCESS",
