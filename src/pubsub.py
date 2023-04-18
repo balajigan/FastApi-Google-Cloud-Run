@@ -21,6 +21,6 @@ class PubSub:
     subscription_name = 'projects/mytemporaryproject28490/subscriptions/gcp-resource-topic-sub'
     with pubsub_v1.SubscriberClient() as subscriber:
 #      subscriber.create_subscription(name=subscription_name, topic=topic_name)
-      future = subscriber.subscribe(subscription_name, callback)
+      future = subscriber.subscribe(subscription_name, cls.callback)
   
 # End of class  
