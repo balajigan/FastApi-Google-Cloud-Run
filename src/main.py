@@ -56,7 +56,7 @@ async def read_items() -> list[Item]:
     return [
         Item(name="Cheese", price=12.0),
         Item(name="Catchup", price=19.0),
-    ]
+    ] 
 
 @app.post("/gcp-resources/cloud-run")
 def createCloudRun(cloudRun : CloudRun):
