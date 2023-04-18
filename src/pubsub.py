@@ -11,4 +11,17 @@ class PubSub:
     future = publisher.publish(topic_name, data, resourceType=resource_type)
     
     future.result()
-  # End of class
+
+  def callback(message):
+    print(message.data)
+    message.ack()
+    
+  def registerSubscriber(cls):
+    topic_name = 'projects/mytemporaryproject28490/topics/gcp-resource-topic'
+    subscription_name = 'projects/mytemporaryproject28490/subscriptions/gcp-resource-topic-sub'
+
+  with pubsub_v1.SubscriberClient() as subscriber:
+    subscriber.create_subscription(name=subscription_name, topic=topic_name)
+    future = subscriber.subscribe(subscription_name, callback)
+  
+# End of class  
