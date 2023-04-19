@@ -26,41 +26,13 @@ class LookupData(BaseModel):
     zone_name: list[str] = ['us-east1-a', 'us-east2-b', 'us-east2-c']
     network : list[str] = ['network1', 'network2']   
     subnetwork : list[str] = ['subnetwork1', 'subnetwork2']                          
-        
-class Customer(BaseModel):
-    FirstName: str
-    LastName: str    
-    Address: str
-    State: str
-    Phone: str
-          
+                 
 @app.get("/")
 def Help():
 #    pubSub = PubSub()
 #    pubSub.registerSubscriber()
     return [LookupData()]
-
-                              
-                              
-@app.get("/products")
-def products():
-    return {"Name": "product1"}
-
-@app.get("/customers")
-def customers():
-    return [
-        Customer(FirstName="John", LastName="Walter", Address="123 willson Rd, Apt 456", State="TX", Phone="123-456-7890"),
-        Customer(FirstName="Raj", LastName="Kumar", Address="1367 Bend Rd, Apt 456", State="MN", Phone="230-564-8790"),
-        Customer(FirstName="Victor", LastName="Frank", Address="2783 Nelson Rd, Apt 456", State="CA", Phone="312-645-0890"),
-    ]
-
-@app.get("/items/")
-async def read_items() -> list[Item]:
-    return [
-        Item(name="Cheese", price=12.0),
-        Item(name="Catchup", price=19.0),
-    ] 
-
+                                                      
 @app.post("/gcp-resources/cloud-run")
 def createCloudRun(cloudRun : CloudRun):
 #    reqested_resource = cloudRun.json()
@@ -76,10 +48,6 @@ def createCloudRun(cloudRun : CloudRun):
         "data" : cloudRun.json()
     }
 
-#@app.post("/files/")
-#async def create_file(file: Annotated[bytes, File()]):
-#    return {"file_size": len(file)}
-
 @app.get("/download-file")
 def download_file():
     file_path = "main.py"
@@ -88,9 +56,9 @@ def download_file():
     return FileResponse(path=file_path, filename=file_path)
 
 
-@app.post("/uploadfile/")
-async def create_upload_file(file: UploadFile):
-    return {"filename": file.filename}
+#@app.post("/uploadfile/")
+#async def create_upload_file(file: UploadFile):
+#    return {"filename": file.filename}
 
 def callback(message):
     print('The subscriber callback method is called')
