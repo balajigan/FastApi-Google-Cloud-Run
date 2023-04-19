@@ -66,7 +66,7 @@ def createCloudRun(cloudRun : CloudRun):
 #    reqested_resource = cloudRun.json()
     print('project Id = ')
     print('$PROJECT_ID')
-    print('and also')
+    print(os.environ['PROJECT_ID'])
     
     pubSub = PubSub()
     pubSub.publishMessage(cloudRun.resource_type,cloudRun.json())
