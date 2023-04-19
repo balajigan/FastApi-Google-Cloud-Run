@@ -99,5 +99,5 @@ with pubsub_v1.SubscriberClient() as subscriber:
     future = subscriber.subscribe(subscription_name, callback)
     try:
         future.result()
-    except KeyboardInterrupt:
-        future.cancel()
+#    except KeyboardInterrupt:
+#        future.cancel()
