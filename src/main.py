@@ -9,6 +9,7 @@ from cloudrun import CloudRun
 from pubsub import PubSub
 
 import os
+from google.cloud import pubsub_v1
 
 app = FastAPI()
 
@@ -35,8 +36,8 @@ class Customer(BaseModel):
           
 @app.get("/")
 def Help():
-    pubSub = PubSub()
-    pubSub.registerSubscriber()
+#    pubSub = PubSub()
+#    pubSub.registerSubscriber()
     return [LookupData()]
 
                               
@@ -86,3 +87,17 @@ def download_file():
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile):
     return {"filename": file.filename}
+
+def callback(message):
+    print('The subscriber callback method is called')
+    print(message.data)
+    message.ack()
+    
+topic_name = 'projects/mytemporaryproject28490/topics/gcp-resource-topic'
+subscription_name = 'projects/mytemporaryproject28490/subscriptions/gcp-resource-topic-sub'
+with pubsub_v1.SubscriberClient() as subscriber:
+    future = subscriber.subscribe(subscription_name, cls.callback)
+    try:
+        future.result()
+    except KeyboardInterrupt:
+        future.cancel()
