@@ -96,7 +96,7 @@ def callback(message):
 topic_name = 'projects/mytemporaryproject28490/topics/gcp-resource-topic'
 subscription_name = 'projects/mytemporaryproject28490/subscriptions/gcp-resource-topic-sub'
 with pubsub_v1.SubscriberClient() as subscriber:
-    future = subscriber.subscribe(subscription_name, cls.callback)
+    future = subscriber.subscribe(subscription_name, callback)
     try:
         future.result()
     except KeyboardInterrupt:
