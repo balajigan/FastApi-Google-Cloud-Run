@@ -56,7 +56,8 @@ def createCloudRun(cloudRun : CloudRun):
 async def receiveMessage(request : Request):
     print('request received ....')
     print(request)
-    print(request.json())
+    req_info = await request.json()
+    print(req_info)
     print('message received ....')
     return {
         "status" : "SUCCESS",
