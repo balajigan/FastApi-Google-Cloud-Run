@@ -61,11 +61,11 @@ async def receiveMessage(request : Request):
     req_info = await request.json()
     print(req_info)
     
-    req_dict = json.loads(req_info)
+    # req_dict = json.loads(req_info)
     
     resource_type = 'TBD' 
     # req_dict.message.attributes.resourceType
-    payload = req_dict['message']
+    payload = req_info['message']
     
     print(resource_type)
     print(payload)
