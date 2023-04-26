@@ -10,6 +10,8 @@ from pubsub import PubSub
 
 import os
 from google.cloud import pubsub_v1
+import json
+
 
 app = FastAPI()
 
@@ -58,8 +60,12 @@ async def receiveMessage(request : Request):
     print(request)
     req_info = await request.json()
     print(req_info)
-    resource_type = req_info.message.attributes.resourceType
-    payload = req_info.message.data
+    
+    req_dict = json.loads(req_info)
+    
+    resource_type = 'TBD' 
+    # req_dict.message.attributes.resourceType
+    payload = req_dict['message']
     
     print(resource_type)
     print(payload)
