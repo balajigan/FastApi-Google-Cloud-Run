@@ -1,5 +1,5 @@
 # main py file
-#from typing import Annotated
+
 from fastapi import FastAPI, File, UploadFile
 from fastapi import Response
 from fastapi import Request
@@ -7,20 +7,19 @@ from pydantic import BaseModel
 from fastapi.responses import FileResponse
 from cloudrun import CloudRun
 from pubsub import PubSub
-
-import os
 from google.cloud import pubsub_v1
-import base64
 
+import base64
+import os
 
 app = FastAPI()
 
-class Item(BaseModel):
-    name: str
-    description: str | None = None
-    price: float
-    tax: float | None = None
-    tags: list[str] = ['Project ID1', 'Project ID2', 'Project ID3', 'Project ID4', 'Project ID5']
+#class Item(BaseModel):
+#    name: str
+#    description: str | None = None
+#    price: float
+#    tax: float | None = None
+#    tags: list[str] = ['Project ID1', 'Project ID2', 'Project ID3', 'Project ID4', 'Project ID5']
 
 class LookupData(BaseModel):
     project_id: list[str] = ['Project_ID1', 'Project_ID2', 'Project_ID3', 'Project_ID4', 'Project_ID4']
@@ -31,8 +30,6 @@ class LookupData(BaseModel):
 
 @app.get("/")
 def home():
-#    pubSub = PubSub()
-#    pubSub.registerSubscriber()
     return "To access swagger: /docs"
         
 @app.get("/help")
@@ -57,17 +54,17 @@ def createCloudRun(cloudRun : CloudRun):
 @app.post("/rx-message")
 async def receiveMessage(request : Request):
     print('request received ....')
-    print(request)
+#    print(request)
     req_info = await request.json()
-    print(req_info)
+#    print(req_info)
         
     resource_type = req_info['message']['attributes']['resourceType'] 
     payload = req_info['message']['data']
     decoded_payload = base64.b64decode(payload)
     print(resource_type)
-    print(payload)
+ #   print(payload)
     print(decoded_payload)
-    print('message received ....')
+    print(' TODO - Process the message and invoke terraform scripts ....')
     return {
         "status" : "SUCCESS",
         "data" : "data received"
