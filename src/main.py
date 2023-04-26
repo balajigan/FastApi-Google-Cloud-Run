@@ -10,7 +10,7 @@ from pubsub import PubSub
 
 import os
 from google.cloud import pubsub_v1
-import json
+import base64
 
 
 app = FastAPI()
@@ -63,9 +63,10 @@ async def receiveMessage(request : Request):
         
     resource_type = req_info['message']['attributes']['resourceType'] 
     payload = req_info['message']['data']
-    
+    decoded_payload = base64.b64decode(payload)
     print(resource_type)
     print(payload)
+    print(decoded_payload)
     print('message received ....')
     return {
         "status" : "SUCCESS",
