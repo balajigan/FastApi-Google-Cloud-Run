@@ -49,7 +49,7 @@ def createCloudRun(cloudRun : CloudRun):
     }
 
 @app.post("/rx-message")
-def receiveMessage(message : str):
+def receiveMessage(message : pubsub_v1.subscriber.message.Message):
     print('message received ....')
     print(message)
     return {
