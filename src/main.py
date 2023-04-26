@@ -48,6 +48,15 @@ def createCloudRun(cloudRun : CloudRun):
         "data" : cloudRun.json()
     }
 
+@app.post("/rx-message")
+def receiveMessage(message : str):
+    print('message received ....')
+    print(message)
+    return {
+        "status" : "SUCCESS",
+        "data" : message
+    }
+
 @app.get("/download-file")
 def download_file():
     file_path = "main.py"
