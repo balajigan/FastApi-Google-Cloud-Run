@@ -42,7 +42,7 @@ def createCloudRun(cloudRun : CloudRun):
     
     pubSub = PubSub()
     pubSub.publishMessage(cloudRun.resource_type,cloudRun.json())
-    print(cloudRun)
+    print(cloudRun.json())
     return {
         "status" : "SUCCESS",
         "data" : cloudRun.json()
