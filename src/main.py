@@ -53,9 +53,11 @@ def createCloudRun(cloudRun : CloudRun):
     }
 
 @app.post("/rx-message")
-def receiveMessage(message : Request):
+def receiveMessage(request : Request):
+    print('request received ....')
+    print(request)
+    print(request.body())
     print('message received ....')
-    print(message)
     return {
         "status" : "SUCCESS",
         "data" : "data received"
