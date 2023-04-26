@@ -26,11 +26,15 @@ class LookupData(BaseModel):
     zone_name: list[str] = ['us-east1-a', 'us-east2-b', 'us-east2-c']
     network : list[str] = ['network1', 'network2']   
     subnetwork : list[str] = ['subnetwork1', 'subnetwork2']                          
-                 
+
 @app.get("/")
-def Help():
+def home():
 #    pubSub = PubSub()
 #    pubSub.registerSubscriber()
+    return "To access swagger: /docs"
+        
+@app.get("/help")
+def Help():
     return [LookupData()]
                                                       
 @app.post("/gcp-resources/cloud-run")
@@ -56,28 +60,29 @@ def receiveMessage(message : Request):
         "status" : "SUCCESS",
         "data" : "data received"
     }
-# pubsub_v1.subscriber.message.Message
-@app.get("/download-file")
-def download_file():
-    file_path = "main.py"
-    directory = os.system('pwd')
-    print(directory)
-    return FileResponse(path=file_path, filename=file_path)
 
+
+# pubsub_v1.subscriber.message.Message
+#@app.get("/download-file")
+#def download_file():
+#    file_path = "main.py"
+#    directory = os.system('pwd')
+#    print(directory)
+#    return FileResponse(path=file_path, filename=file_path)
 
 #@app.post("/uploadfile/")
 #async def create_upload_file(file: UploadFile):
 #    return {"filename": file.filename}
 
-def callback(message):
-    print('The subscriber callback method is called')
-    print(message.data)
-    message.ack()
+#def callback(message):
+#    print('The subscriber callback method is called')
+#    print(message.data)
+#    message.ack()
     
-topic_name = 'projects/mytemporaryproject28490/topics/gcp-resource-topic'
-subscription_name = 'projects/mytemporaryproject28490/subscriptions/gcp-resource-topic-sub'
-with pubsub_v1.SubscriberClient() as subscriber:
-    future = subscriber.subscribe(subscription_name, callback)
+#topic_name = 'projects/mytemporaryproject28490/topics/gcp-resource-topic'
+#subscription_name = 'projects/mytemporaryproject28490/subscriptions/gcp-resource-topic-sub'
+#with pubsub_v1.SubscriberClient() as subscriber:
+#    future = subscriber.subscribe(subscription_name, callback)
 #    try:
 #        future.result()
 #    except KeyboardInterrupt:
