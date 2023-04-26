@@ -58,6 +58,11 @@ async def receiveMessage(request : Request):
     print(request)
     req_info = await request.json()
     print(req_info)
+    resource_type = req_info.message.attributes.resourceType
+    payload = req_info.message.data
+    
+    print(resource_type)
+    print(payload)
     print('message received ....')
     return {
         "status" : "SUCCESS",
