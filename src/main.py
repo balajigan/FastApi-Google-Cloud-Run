@@ -49,14 +49,14 @@ def createCloudRun(cloudRun : CloudRun):
     }
 
 @app.post("/rx-message")
-def receiveMessage(message : pubsub_v1.subscriber.message.Message):
+def receiveMessage(message : Request):
     print('message received ....')
     print(message)
     return {
         "status" : "SUCCESS",
-        "data" : message
+        "data" : "data received"
     }
-
+# pubsub_v1.subscriber.message.Message
 @app.get("/download-file")
 def download_file():
     file_path = "main.py"
