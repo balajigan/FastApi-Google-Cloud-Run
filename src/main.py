@@ -8,11 +8,21 @@ from fastapi.responses import FileResponse
 from cloudrun import CloudRun
 from pubsub import PubSub
 from google.cloud import pubsub_v1
+from fastapi.middleware.cors import CORSMiddleware
 
 import base64
 import os
 
 app = FastAPI()
+
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 #class Item(BaseModel):
 #    name: str
